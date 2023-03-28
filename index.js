@@ -7,6 +7,7 @@ const cors = require('cors')
 const usuarioRouter = require('./API/routes/UsuarioRoute')
 const FridgeRoute = require("./API/routes/FridgeRoute")
 const IceCreamRoute = require("./API/routes/IceCreamRoute")
+const CrearFridgeRoute = require("./API/routes/CrearFridgeRoute")
 
 const app = express();
 app.use(bodyParser.json())+
@@ -16,6 +17,8 @@ app.use('/usuarios',usuarioRouter)
 app.use('/fridge',FridgeRoute)
 
 app.use('/icecream', IceCreamRoute)
+
+app.use('/fridge', CrearFridgeRoute)
 
 app.get('/',(req,res)=>{
     res.status(200).send({'Mensaje':'Api JWT'})
