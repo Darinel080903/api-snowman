@@ -13,6 +13,21 @@ class UsuarioModel{
             })
         })
     }
+
+    GetUser(req){
+        return new Promise((resolve, reject) => {
+            mysql.query(`SELECT * FROM users WHERE email =? AND password = ?`,[req.email, req.password],(error, result) =>{
+                if(error){ 
+                    reject({ message : 'ta mal'})
+                }else{
+                    jwt.sign({result}, 'secretkey', (err, token)=>{
+                        resolve({token})
+                    })
+                }
+            })
+        })
+
+    }
 }
 
 module.exports = new UsuarioModel();

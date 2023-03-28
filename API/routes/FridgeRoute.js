@@ -1,8 +1,9 @@
 const FridgeController = require('../controllers/FridgeController')
-const express = require('express')
+const express = require('express');
+const { json } = require('body-parser');
 const FridgeRoute = express.Router();
 
-FridgeRoute.get('/listar', (req, res) =>{
+FridgeRoute.get('/listar', (req, res) => {
     const listar = FridgeController.ListarFridge();
 
     listar.then((data) => {
@@ -10,6 +11,32 @@ FridgeRoute.get('/listar', (req, res) =>{
     }).catch((data) => {
         res.status(500).send(data)
     })
+
+})
+
+FridgeRoute.get('/:id', (req, res) => {
+    const get = FridgeController.GetFridge(req.params.id);
+    
+    console.log(req.params.id)
+
+    get.then((data) => {
+        res.status(200).send(data)
+    }).catch((data) => {
+        res.status(500).send(data)
+    })
+
+})
+
+FridgeRoute.post('/crear', (req, res) => {
+    const crear = FridgeController.CrearFridge(req);
+
+    req.body
+    crear.then((data) => {
+        res.status(200).send(data)
+    }).catch((data) => {
+        res.status(500).send(data)
+    })
+
 })
 
 module.exports = FridgeRoute;

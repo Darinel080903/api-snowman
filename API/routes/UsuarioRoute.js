@@ -12,4 +12,17 @@ usuarioRouter.get('/listar', (req, res) =>{
     })
 })
 
+usuarioRouter.post('/login', (req, res) => {
+    const get = UsuarioController.GetUser(req.body);
+    
+    console.log(req.params.id)
+
+    get.then((data) => {
+        res.status(200).send(data)
+    }).catch((data) => {
+        res.status(500).send(data)
+    })
+
+})
+
 module.exports = usuarioRouter;
