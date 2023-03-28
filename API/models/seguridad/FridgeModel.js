@@ -42,6 +42,18 @@ class FridgeModel{
         })
     }
 
+    DeleteFridge(id){
+        return new Promise((resolve, reject) => {
+            mysql.query(`DELETE FROM fridge WHERE id = ? `, [id],(error, result) =>{
+                if(error){
+                    reject({ message : 'ta mal'})
+                }else{
+                    resolve(result)
+                }
+            })
+        })
+    }
+
     UpdateImage(req){
         return new Promise((resolve, reject) => {
             

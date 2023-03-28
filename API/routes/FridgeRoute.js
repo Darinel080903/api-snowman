@@ -39,4 +39,14 @@ FridgeRoute.post('/crear', (req, res) => {
 
 })
 
+FridgeRoute.delete('/delete/:id', (req, res) => {
+    const borrar = FridgeController.DeleteFridge(req.params.id)
+
+    borrar.then((data) => {
+        res.status(200).send(data)
+    }).catch((data) => {
+        res.status(500).send(data)
+    })
+})
+
 module.exports = FridgeRoute;

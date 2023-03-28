@@ -11,6 +11,11 @@ class FridgeController {
         return consulta;
     }
 
+    DeleteFridge(id){
+        const consulta = FridgeModel.DeleteFridge(id);
+        return consulta;
+    }
+
     CrearFridge(req){
         const consulta = FridgeModel.CrearFridge(req.body);
         return consulta;
