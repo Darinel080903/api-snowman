@@ -3,6 +3,13 @@ const jwt = require ("jsonwebtoken")
 const bodyParser = require("body-parser")
 const cors = require('cors')
 
+
+const config = require('./config.js');
+
+
+const PORT = config.PORT;
+const HOST = config.HOST;
+
 //constante para rutas
 const usuarioRouter = require('./API/routes/UsuarioRoute')
 const FridgeRoute = require("./API/routes/FridgeRoute")
@@ -18,9 +25,9 @@ app.use('/fridge',FridgeRoute)
 app.use('/icecream', IceCreamRoute)
 
 app.get('/',(req,res)=>{
+    res.send('Trabajando')
     res.status(200).send({'Mensaje':'Api JWT'})
 })
 
-app.listen(3000, () => {
-    console.log('Servidor en el puerto 3000')
-})
+app.listen(PORT, HOST);
+console.log(`Running on http://${HOST}:${PORT}`)
