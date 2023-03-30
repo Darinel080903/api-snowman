@@ -56,7 +56,7 @@ class FridgeModel{
 
     UpdateImage(req, id){
         return new Promise((resolve, reject) => {
-            mysql.query(`INSERT INTO fridge WHERE id = ? AND image = ? `,[req.image],[id], (error, result) =>{
+            mysql.query(`UPDATE fridge SET image = '${req.image}' WHERE id = ${id} `,(error, result) =>{
                 if(error){
                     reject({ message : 'ta mal'})
                 }else{
