@@ -1,5 +1,37 @@
 const mysql = require ('../../../utils/global/database')
-const publisher = require ('../../../publisher')
+
+const amqp = require('amqplib')
+require('dotenv').config()
+
+const hostname = process.env.HOST || 'localhost'
+const protocol = process.env.PROTOCOL
+const username = process.env.USERNAME
+const password = process.env.PASSWORD
+const queue = process.env.QUEUE
+
+const rabbitSettings = {
+    protocol: protocol,
+    hostname: hostname,
+    username: username,
+    password: password,
+    vhost: '/'
+}
+
+async function connect(message) {
+    try {
+        const conn = await amqp.connect(rabbitSettings)
+        console.log("*Conectado*")
+
+        const channel = await conn.createChannel();
+
+        channel.sendToQueue(queue, Buffer.from(message))
+
+
+    }
+    catch (error){
+        console.log('Erro =>', error)
+    }
+}
 
 class FridgeModel{
 
@@ -37,7 +69,7 @@ class FridgeModel{
                 if(error){
                     reject({ message : 'ta mal'})
                 }else{
-                    publisher.connect
+                    connect("Se ha instalado un nuevo contenedor, reavalo en el panel de control")
                     resolve(result)
                 }
             })
