@@ -1,4 +1,5 @@
 const mysql = require ('../../../utils/global/database')
+const publisher = require ('../../../publisher')
 
 class FridgeModel{
 
@@ -36,6 +37,7 @@ class FridgeModel{
                 if(error){
                     reject({ message : 'ta mal'})
                 }else{
+                    publisher.connect
                     resolve(result)
                 }
             })

@@ -30,4 +30,5 @@ async function connect() {
     }
 }
 
-connect()
+
+export { connect }
