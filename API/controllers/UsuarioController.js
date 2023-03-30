@@ -9,6 +9,14 @@ class UsuarioController {
         const consulta = UsuarioModel.GetUser(req);
         return consulta;
     }
+    UsuarioByID(id){
+        const consulta = UsuarioModel.UsuarioByID(id);
+        return consulta;
+    }
+    CrearUsuario(req){
+        const consulta = UsuarioModel.CrearUsuario(req);
+        return consulta;
+    }
 }
 
 module.exports = new UsuarioController();

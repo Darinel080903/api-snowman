@@ -21,9 +21,11 @@ class FridgeController {
         return consulta;
     }
 
+    UpdateImage(req, id){
+        const consulta = FridgeModel.UpdateImage(req.body, id);
+        return consulta;
+    }
     
-
-
 }
 
 module.exports = new FridgeController();

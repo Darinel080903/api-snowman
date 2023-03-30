@@ -22,6 +22,28 @@ usuarioRouter.post('/login', (req, res) => {
     }).catch((data) => {
         res.status(500).send(data)
     })
+})
+
+usuarioRouter.get('/:id', (req, res) => {
+    const get = UsuarioController.UsuarioByID(req.params.id);
+    
+    console.log(req.params.id)
+
+    get.then((data) => {
+        res.status(200).send(data)
+    }).catch((data) => {
+        res.status(500).send(data)
+    })
+})
+
+usuarioRouter.post('/crear', (req, res) => {
+    const crear = UsuarioController.CrearUsuario(req);
+    req.body
+    crear.then((data) => {
+        res.status(200).send(data)
+    }).catch((data) => {
+        res.status(500).send(data)
+    })
 
 })
 

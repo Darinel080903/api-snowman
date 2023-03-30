@@ -54,13 +54,9 @@ class FridgeModel{
         })
     }
 
-    UpdateImage(req){
+    UpdateImage(req, id){
         return new Promise((resolve, reject) => {
-            
-            const {id, image, freezer, content, status} = req
-            const insertarDatos = `INSERT INTO fridge (id, image, freezer, content, status) VALUES ('${id}','${image}' , '${freezer}', '${content}', '${status}')`;
-
-            mysql.query(insertarDatos, (error, result) =>{
+            mysql.query(`INSERT INTO fridge WHERE id = ? AND image = ? `,[req.image],[id], (error, result) =>{
                 if(error){
                     reject({ message : 'ta mal'})
                 }else{

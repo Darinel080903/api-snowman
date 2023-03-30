@@ -49,4 +49,14 @@ FridgeRoute.delete('/delete/:id', (req, res) => {
     })
 })
 
+FridgeRoute.put('/actualizar/:id', (req, res) => {
+    const update = FridgeController.UpdateImage(req, req.params.id)
+
+    update.then((data) => {
+        res.status(200).send(data)
+    }).catch((data) => {
+        res.status(500).send(data)
+    })
+})
+
 module.exports = FridgeRoute;
