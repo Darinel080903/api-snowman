@@ -13,7 +13,7 @@ usuarioRouter.get('/listar', (req, res) =>{
 })
 
 usuarioRouter.post('/login', (req, res) => {
-    const get = UsuarioController.GetUser(req.body);
+    const get = UsuarioController.LoginUser(req.body);
     
     console.log(req.params.id)
 

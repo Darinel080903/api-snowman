@@ -5,8 +5,8 @@ class UsuarioController {
         const consulta = UsuarioModel.ListarUsuarios();
         return consulta;
     }
-    GetUser(req){
-        const consulta = UsuarioModel.GetUser(req);
+    LoginUser(req){
+        const consulta = UsuarioModel.LoginUser(req);
         return consulta;
     }
     UsuarioByID(id){

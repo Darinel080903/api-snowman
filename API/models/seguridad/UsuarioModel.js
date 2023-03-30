@@ -14,7 +14,7 @@ class UsuarioModel{
         })
     }
 
-    GetUser(req){
+    LoginUser(req){
         return new Promise((resolve, reject) => {
             mysql.query(`SELECT * FROM users WHERE email =? AND password = ?`,[req.email, req.password],(error, result) =>{
                 if(error){ 
