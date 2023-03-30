@@ -31,4 +31,4 @@ async function connect() {
 }
 
 
-export { connect }
+module.exports = { connect }
