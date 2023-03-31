@@ -62,8 +62,8 @@ class FridgeModel{
     CrearFridge(req){
         return new Promise((resolve, reject) => {
             
-            const {id, image, freezer, content, status} = req
-            const insertarDatos = `INSERT INTO fridge (id, image, freezer, content, status) VALUES ('${id}','${image}' , '${freezer}', '${content}', '${status}')`;
+            const {id, image, freezer, content} = req
+            const insertarDatos = `INSERT INTO fridge (id, image, freezer, content, status) VALUES ('${id}','${image}' , '${freezer}', '${content}', 1)`;
 
             mysql.query(insertarDatos, (error, result) =>{
                 if(error){

@@ -15,7 +15,6 @@ usuarioRouter.get('/listar', (req, res) =>{
 usuarioRouter.post('/login', (req, res) => {
     const get = UsuarioController.LoginUser(req.body);
     
-    console.log(req.params.id)
 
     get.then((data) => {
         res.status(200).send(data)
